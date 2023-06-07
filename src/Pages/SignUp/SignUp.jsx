@@ -1,5 +1,7 @@
+import { updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 import loginImg from "../../assets/background/share.png";
 import GoogleLogin from "../Shared/GoogleLogin/GoogleLogin";
 import SubBanner from "../Shared/SubBanner/SUbBanner";
@@ -11,11 +13,28 @@ const SignUp = () => {
     handleSubmit,
     watch,
   } = useForm();
+  const { createUser, auth } = useAuth();
   const password = watch("password");
 
   const onSubmit = (data) => {
+    createUser(data.email, data.password)
+      .then((data) => {
+        const user = data.user;
+        console.log(user);
+        updateProfile(auth.currentUser, {
+          displayName: data.name,
+          photoURL: data.photo,
+        })
+          .then(() => {
+            // toast.success("New Account Successfully created");
+            alert("successfully created account");
+          })
+          .catch((error) => console.log(error));
+      })
+      .catch((error) => console.log(error));
     console.log(data);
   };
+
   const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/;
   return (
     <div>

@@ -1,0 +1,6 @@
+.bg-popular {
+  background-image: url("../../../assets/background/bg-banner-01.png");
+  background-size: cover;
+  width: 100vw;
+  /* height: 70vh; */
+}

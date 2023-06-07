@@ -7,16 +7,21 @@ const Navbar = () => {
   const { user } = useAuth();
   const nav = (
     <>
-      <NavLink className="btn btn-ghost">Home</NavLink>
+      <NavLink to="/" className="btn btn-ghost">
+        Home
+      </NavLink>
 
-      <NavLink className="btn btn-ghost">Instructors</NavLink>
+      <NavLink to="/instructors" className="btn btn-ghost">
+        Instructors
+      </NavLink>
 
-      <NavLink className="btn btn-ghost">Classes</NavLink>
-      {
-        user && <NavLink className="btn btn-ghost">Dashboard</NavLink>
-      }
+      <NavLink to="/classes" className="btn btn-ghost">
+        Classes
+      </NavLink>
+      {user && <NavLink className="btn btn-ghost">Dashboard</NavLink>}
     </>
   );
+  console.log(user);
   return (
     <Container>
       <div className="navbar">
@@ -51,16 +56,18 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{nav}</ul>
         </div>
         <div className="navbar-end">
-          {user ? (
+          {user && user?.email ? (
             <>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                <div title={user?.displayName} className="w-10 rounded-full">
+                  <img src={user?.photoURL} />
                 </div>
               </label>
             </>
           ) : (
-            <NavLink to="/login" className="btn btn-ghost">Login</NavLink>
+            <NavLink to="/login" className="btn btn-ghost">
+              Login
+            </NavLink>
           )}
           {/* <a className="btn">Button</a> */}
         </div>

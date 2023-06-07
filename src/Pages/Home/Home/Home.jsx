@@ -1,7 +1,13 @@
+import Bannerr from "../Banner/Banner";
+import PopularInstructiors from "../Popular Instructors/PopularInstructiors";
+import PopularClass from "../PopularClass/PopularClass";
+
 const Home = () => {
   return (
     <div>
-      <h2>Home Page</h2>
+      <Bannerr />
+      <PopularClass />
+      <PopularInstructiors/>
     </div>
   );
 };
