@@ -1,4 +1,4 @@
-const Container = ({ children }) => {
+const ContainerXL = ({ children }) => {
   return (
     <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8">
       {children}
@@ -6,4 +6,4 @@ const Container = ({ children }) => {
   );
 };
 
-export default Container;
+export default ContainerXL;

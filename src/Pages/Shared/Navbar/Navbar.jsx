@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
-import Container from "../../../components/Container";
+import ContainerXL from "../../../components/ContainerXL";
 
 const Navbar = () => {
   //  const {user} = useContext(AuthContext)
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   const nav = (
     <>
       <NavLink to="/" className="btn btn-ghost">
@@ -18,12 +18,21 @@ const Navbar = () => {
       <NavLink to="/classes" className="btn btn-ghost">
         Classes
       </NavLink>
-      {user && <NavLink className="btn btn-ghost">Dashboard</NavLink>}
+      {user && (
+        <NavLink to="/dashboard" className="btn btn-ghost">
+          Dashboard
+        </NavLink>
+      )}
     </>
   );
-  console.log(user);
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   return (
-    <Container>
+    <ContainerXL>
       <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
@@ -63,6 +72,9 @@ const Navbar = () => {
                   <img src={user?.photoURL} />
                 </div>
               </label>
+              <button onClick={handleLogout} className="btn btn-ghost">
+                Logout
+              </button>
             </>
           ) : (
             <NavLink to="/login" className="btn btn-ghost">
@@ -72,7 +84,7 @@ const Navbar = () => {
           {/* <a className="btn">Button</a> */}
         </div>
       </div>
-    </Container>
+    </ContainerXL>
   );
 };
 

@@ -1,4 +1,4 @@
-const Header = ({ subTitle, title, description, label }) => {
+const Headers = ({ subTitle, title, description, label }) => {
   return (
     <div className="flex justify-between items-center">
       <div className="text-left space-y-3">
@@ -13,4 +13,4 @@ const Header = ({ subTitle, title, description, label }) => {
   );
 };
 
-export default Header;
+export default Headers;

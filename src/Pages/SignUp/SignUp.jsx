@@ -1,6 +1,7 @@
 import { updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { saveUser } from "../../Api/api";
 import useAuth from "../../Hooks/useAuth";
 import loginImg from "../../assets/background/share.png";
 import GoogleLogin from "../Shared/GoogleLogin/GoogleLogin";
@@ -27,6 +28,7 @@ const SignUp = () => {
         })
           .then(() => {
             // toast.success("New Account Successfully created");
+            saveUser(user.email, "student");
             alert("successfully created account");
           })
           .catch((error) => console.log(error));

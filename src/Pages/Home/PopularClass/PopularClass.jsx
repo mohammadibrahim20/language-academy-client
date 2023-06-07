@@ -1,14 +1,14 @@
 import { BiBookReader } from "react-icons/bi";
-import Container from "../../../components/Container";
-import Header from "../../../components/Header";
+import ContainerXL from "../../../components/ContainerXL";
+import Headers from "../../../components/Headers";
 import "./PopularClass.css";
 
 const PopularClass = () => {
   return (
     <div className="bg-popular ">
-      <Container>
+      <ContainerXL>
         <div className="my-32">
-          <Header
+          <Headers
             title="Popular Classes"
             subTitle="Our Most Popular Classes"
             label="All Classes"
@@ -57,7 +57,7 @@ const PopularClass = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </ContainerXL>
     </div>
   );
 };

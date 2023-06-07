@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import loginImg from "../../assets/background/share.png";
 import GoogleLogin from "../Shared/GoogleLogin/GoogleLogin";
 import SubBanner from "../Shared/SubBanner/SUbBanner";
@@ -11,6 +11,7 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
   const { user, signIn } = useAuth();
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [axiosSecure] = useAxiosSecure()
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -21,7 +22,7 @@ const Login = () => {
       .then((loggedUser) => {
         const user = loggedUser.user;
         console.log(user);
-        toast.success("User logged in successfully");
+        
       })
       .catch((error) => console.log(error));
     console.log(data);

@@ -1,13 +1,13 @@
 import { MdOutlineMarkEmailRead } from "react-icons/md";
-import Container from "../../../components/Container";
-import Header from "../../../components/Header";
+import ContainerXL from "../../../components/ContainerXL";
+import Headers from "../../../components/Headers";
 
 const PopularInstructiors = () => {
   return (
     <div className="bg-popular ">
-      <Container>
+      <ContainerXL>
         <div className="my-32">
-          <Header
+          <Headers
             title="Popular Instructors"
             subTitle="Our Most Popular Instructors"
             label="All Instructors"
@@ -33,7 +33,7 @@ const PopularInstructiors = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </ContainerXL>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 // import Banner from "../../../assets/background/banner.png";
 import photoObject from "../../../assets/background/object.png";
-import Container from "../../../components/Container";
+import ContainerXL from "../../../components/ContainerXL";
 import "./Banner.css";
 const Bannerr = () => {
   return (
     <div className="w-full new-banner">
-      <Container>
+      <ContainerXL>
         <div className="flex flex-col md:flex-row m-5 justify-between items-center py-16 md:py-32 ">
           <div className="text-left my-auto space-y-5">
             <p className="text-xl font-semibold">The Leader in Online Learning</p>
@@ -18,7 +18,7 @@ const Bannerr = () => {
             <img className="object-cover bottom-0" src={photoObject} alt="" />
           </figure>
         </div>
-      </Container>
+      </ContainerXL>
     </div>
   );
 };

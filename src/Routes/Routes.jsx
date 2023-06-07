@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import Classes from "../Pages/Home/Classes/Classes";
 import Home from "../Pages/Home/Home/Home";
@@ -34,4 +35,8 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: 'dashboard',
+    element: <Dashboard />,
+  }
 ]);
