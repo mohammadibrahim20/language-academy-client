@@ -3,8 +3,8 @@ import useAuth from "../../../Hooks/useAuth";
 import Container from "../../../components/Container";
 
 const Navbar = () => {
-//  const {user} = useContext(AuthContext)
-const {user} = useAuth()
+  //  const {user} = useContext(AuthContext)
+  const { user } = useAuth();
   const nav = (
     <>
       <NavLink className="btn btn-ghost">Home</NavLink>
@@ -12,11 +12,14 @@ const {user} = useAuth()
       <NavLink className="btn btn-ghost">Instructors</NavLink>
 
       <NavLink className="btn btn-ghost">Classes</NavLink>
+      {
+        user && <NavLink className="btn btn-ghost">Dashboard</NavLink>
+      }
     </>
   );
   return (
     <Container>
-      <div className="navbar bg-base-100 fixed">
+      <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -50,7 +53,6 @@ const {user} = useAuth()
         <div className="navbar-end">
           {user ? (
             <>
-              <NavLink to="/login">Dasboard</NavLink>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                   <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
@@ -58,8 +60,9 @@ const {user} = useAuth()
               </label>
             </>
           ) : (
-            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/login" className="btn btn-ghost">Login</NavLink>
           )}
+          {/* <a className="btn">Button</a> */}
         </div>
       </div>
     </Container>
