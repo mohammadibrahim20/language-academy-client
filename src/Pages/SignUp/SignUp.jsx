@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import loginImg from "../../assets/background/share.png";
@@ -6,16 +5,13 @@ import GoogleLogin from "../Shared/GoogleLogin/GoogleLogin";
 import SubBanner from "../Shared/SubBanner/SUbBanner";
 
 const SignUp = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
   const {
     register,
     formState: { errors },
     handleSubmit,
+    watch,
   } = useForm();
-
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
+  const password = watch("password");
 
   const onSubmit = (data) => {
     console.log(data);
@@ -26,7 +22,7 @@ const SignUp = () => {
       <SubBanner title="Register Now" subTitle="Please Register Now" />
       <div>
         <section className="bg-gray-50 pt-20 flex items-center justify-center">
-          <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+          <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-4xl p-5 items-center">
             <div className="md:w-1/2 px-8 md:px-16">
               <h2 className="font-bold text-2xl text-[#002D74]">Register</h2>
               <p className="text-xs mt-4 text-[#002D74]">
@@ -72,11 +68,32 @@ const SignUp = () => {
                       },
                     })}
                     className="p-2 rounded-xl border w-full"
-                    type={passwordVisible ? "text" : "password"}
+                    type="password"
                     name="password"
                     placeholder="Password"
                   />
-                  {errors.password && <span>{errors.password.message}</span>}
+                  {errors.password && (
+                    <span className="text-justify text-red-400">
+                      <small>{errors.password.message}</small>
+                    </span>
+                  )}
+                </div>
+                <div className="relative">
+                  <input
+                    {...register("confirmPassword", {
+                      required: "Confirm Password is required",
+                      validate: (value) =>
+                        value === password || "Passwords do not match",
+                    })}
+                    className="p-2 rounded-xl border w-full"
+                    type="password"
+                    placeholder="Confirm Password"
+                  />
+                  {errors.confirmPassword && (
+                    <span className="text-justify text-red-400">
+                      <small>{errors.confirmPassword.message}</small>
+                    </span>
+                  )}
                 </div>
                 <input
                   type="submit"
@@ -109,7 +126,7 @@ const SignUp = () => {
               </div>
             </div>
 
-            <div className="md:block hidden w-1/2">
+            <div className="md:block hidden md:w-1/2">
               <img className="rounded-2xl" src={loginImg} />
             </div>
           </div>
