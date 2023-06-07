@@ -9,6 +9,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
+import { getRole } from "../Api/api";
 import app from "../Firebase/Firebase.config";
 
 export const AuthContext = createContext(null);
@@ -16,6 +17,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [role, setRole] = useState("student");
   const googleProvider = new GoogleAuthProvider();
 
   const createUser = (email, password) => {
@@ -30,7 +32,11 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
-
+  useEffect(() => {
+    if (user) {
+      getRole(user.email).then((data) => setRole(data));
+    }
+  }, [user]);
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (loggedUser) => {
       setUser(loggedUser);
@@ -39,10 +45,11 @@ const AuthProvider = ({ children }) => {
           email: loggedUser.email,
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           localStorage.setItem("access_token", data.data.token);
         });
       setLoading(false);
+      localStorage.removeItem("access_token");
     });
     return () => unSubscribe();
   }, []);
@@ -58,6 +65,8 @@ const AuthProvider = ({ children }) => {
     signIn,
     signinWithGoogle,
     logOut,
+    role,
+    setRole,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

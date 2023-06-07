@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { saveUser } from "../../../Api/api";
 import useAuth from "../../../Hooks/useAuth";
 
 const GoogleLogin = () => {
@@ -9,7 +9,7 @@ const GoogleLogin = () => {
       .then((loggedUser) => {
         const user = loggedUser.user;
         console.log(user);
-        toast.success("User logged in successfully");
+        saveUser(user.email, "student");
       })
       .catch((error) => console.log(error));
   };

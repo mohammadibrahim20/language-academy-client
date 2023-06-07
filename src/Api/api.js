@@ -11,3 +11,9 @@ export const saveUser = (user, role) => {
       console.log(res.data);
     });
 };
+
+export const getRole = async email => {
+  const response = await fetch(`http://localhost:5000/user/${email}`)
+  const user = await response.json()
+  return user?.role
+}

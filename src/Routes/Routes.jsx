@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
+import AddClass from "../Pages/DashboardCompo/Instructor/AddClass";
+import MyClass from "../Pages/DashboardCompo/Instructor/MyClass";
 import Classes from "../Pages/Home/Classes/Classes";
 import Home from "../Pages/Home/Home/Home";
 import Instructors from "../Pages/Instructors/Instructors";
@@ -26,17 +28,27 @@ export const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: '/instructors',
+        path: "/instructors",
         element: <Instructors />,
       },
       {
         path: "classes",
         element: <Classes />,
-      }
+      },
     ],
   },
   {
-    path: 'dashboard',
+    path: "dashboard",
     element: <Dashboard />,
-  }
+    children: [
+      {
+        path: "/dashboard/addclass",
+        element: <AddClass />,
+      },
+      {
+        path: "/dashboard/myclass",
+        element: <MyClass />,
+      },
+    ],
+  },
 ]);
