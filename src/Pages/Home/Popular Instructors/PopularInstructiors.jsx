@@ -4,7 +4,7 @@ import Headers from "../../../components/Headers";
 
 const PopularInstructiors = () => {
   return (
-    <div className="bg-popular ">
+    <div className="bg-popular pb-5">
       <ContainerXL>
         <div className="my-32">
           <Headers

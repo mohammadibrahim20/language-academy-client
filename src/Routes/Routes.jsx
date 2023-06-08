@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
         element: <AddClass />,
       },
       {
-        path: "/dashboard/myclass",
+        path: "/dashboard/my-classes",
         element: <MyClass />,
       },
     ],

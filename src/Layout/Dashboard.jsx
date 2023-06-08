@@ -7,7 +7,6 @@ import ContainerXL from "../components/ContainerXL";
 const Dashboard = () => {
   const { user, role } = useAuth();
 
-  console.log(role);
   return (
     <>
       <Navbar />
@@ -60,7 +59,7 @@ const Dashboard = () => {
                   </NavLink>
                   <hr />
                   <NavLink
-                    to="/dashboard/myclass"
+                    to="/dashboard/my-classes"
                     className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
                   >
                     <span className="flex justify-start items-center font-semibold ">

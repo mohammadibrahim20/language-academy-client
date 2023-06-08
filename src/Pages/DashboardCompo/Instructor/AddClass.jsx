@@ -19,8 +19,8 @@ const AddClass = () => {
     const title = form.title.value;
     const instructor_name = form.instructor_name.value;
     const instructor_email = form.instructor_email.value;
-    const seat_capacity = parseInt(form.seat_capacity.value)
-    const price = parseFloat(form.price.value)
+    const seat_capacity = parseInt(form.seat_capacity.value);
+    const price = parseFloat(form.price.value);
     const instructor_photo = user?.photoURL;
     const status = "pending";
     if (selectedImage) {
@@ -39,6 +39,7 @@ const AddClass = () => {
             instructor_photo,
             status,
             calss_image,
+            enrolled: 0,
           };
           axios.post(`http://localhost:5000/add-class`, doc).then((res) => {
             console.log(res.data);
