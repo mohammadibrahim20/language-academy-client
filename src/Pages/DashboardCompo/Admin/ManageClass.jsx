@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import CLassRow from "../Instructor/CLassRow";
+import AllClassRow from "./AllClassRow";
 
 const ManageClass = () => {
   const [classData, setClassData] = useState([]);
@@ -23,15 +23,15 @@ const ManageClass = () => {
               <tr>
                 <th>Details</th>
                 <th>Student & Price</th>
-                <th>Action</th>
                 <th>Status</th>
+                <th>Aprove & Deny</th>
                 {/* <th>Feedback</th> */}
               </tr>
             </thead>
             <tbody>
               {/* row 1 */}
               {classData?.map((row) => (
-                <CLassRow key={row._id} row={row} />
+                <AllClassRow key={row._id} row={row} />
               ))}
             </tbody>
           </table>
