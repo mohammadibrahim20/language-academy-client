@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
-        path: "/dashboard/addclass",
+        path: "/dashboard/add-class",
         element: <AddClass />,
       },
       {

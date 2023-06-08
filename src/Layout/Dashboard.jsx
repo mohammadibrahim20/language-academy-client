@@ -1,5 +1,5 @@
 import { MdFeaturedVideo } from "react-icons/md";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 import ContainerXL from "../components/ContainerXL";
@@ -34,28 +34,49 @@ const Dashboard = () => {
                 <p className="text-gray-500">{role}</p>
               </div>
               <div className="p-4 border-t mx-8 mt-2">
-                <button className=" block mx-auto rounded-full bg-blue-600 btn-outline hover:shadow-lg font-semibold text-white px-6 py-2">
-                  Add New Class
-                </button>
+                <Link
+                  to="/"
+                  className="block mx-auto text-center rounded-full bg-blue-600 btn-outline hover:shadow-lg font-semibold text-white px-6 py-2"
+                >
+                  Home
+                </Link>
               </div>
             </div>
             <div className="mt-10 bg-white shadow-xl rounded-lg px-5 pt-5">
               <h2 className="text-2xl text-[#002058] font-bold uppercase">
                 Dashboard
               </h2>
-              <div className="divider mt-0"></div>
+              <div className="divider my-0"></div>
               {user && user.email && role === "instructor" && (
                 <>
                   <NavLink
-                    to="/dashboard/myclass"
+                    to="/dashboard/add-class"
                     className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
                   >
                     <span className=" flex justify-start items-center font-semibold ">
                       <MdFeaturedVideo className="text-red-500 mr-3" />
-                      My CLass
+                      Add CLass
                     </span>
                   </NavLink>
                   <hr />
+                  <NavLink
+                    to="/dashboard/myclass"
+                    className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
+                  >
+                    <span className="flex justify-start items-center font-semibold ">
+                      <MdFeaturedVideo className="text-red-500 mr-3" />
+                      My CLass
+                    </span>
+                  </NavLink>
+                  <NavLink
+                    to="/dashboard/myclass"
+                    className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
+                  >
+                    <span className="flex justify-start items-center font-semibold ">
+                      <MdFeaturedVideo className="text-red-500 mr-3" />
+                      My CLass
+                    </span>
+                  </NavLink>
                   <NavLink
                     to="/dashboard/myclass"
                     className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
