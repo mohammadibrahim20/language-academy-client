@@ -14,7 +14,11 @@ const MyClass = () => {
       });
     }
   }, [user]);
-//   console.log(classData);
+  //   console.log(classData);
+  const openModel = (row) => {
+    window.my_modal_4.showModal();
+    console.log(row);
+  };
   return (
     <div>
       <div className=" bg-white shadow-xl rounded-lg px-5 py-7 space-y-3">
@@ -30,25 +34,28 @@ const MyClass = () => {
                 <th>Student & Price</th>
                 <th>Action</th>
                 <th>Status</th>
-                <th>Feedback</th>
+                {/* <th>Feedback</th> */}
               </tr>
             </thead>
             <tbody>
               {/* row 1 */}
-             {
-                classData?.map(row=> <CLassRow key={row._id} row={row}/>)
-             }
+              {classData?.map((row) => (
+                <CLassRow key={row._id} openModel={openModel} row={row} />
+              ))}
             </tbody>
-            {/* foot */}
-            <tfoot>
-              {/* <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
-              </tr> */}
-            </tfoot>
           </table>
+          {/* <button className="btn" onClick={()=>}>open modal</button> */}
+
+          <dialog id="my_modal_4" className="modal">
+            <form method="dialog" className="modal-box w-11/12 max-w-5xl">
+              <h3 className="font-bold text-lg">Hello!</h3>
+              <p className="py-4">Click the button below to close</p>
+              <div className="modal-action">
+                {/* if there is a button, it will close the modal */}
+                <button className="btn">Close</button>
+              </div>
+            </form>
+          </dialog>
         </div>
       </div>
     </div>
