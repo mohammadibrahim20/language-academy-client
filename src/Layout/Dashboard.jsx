@@ -87,6 +87,41 @@ const Dashboard = () => {
                   </NavLink>
                 </>
               )}
+
+              {user && user.email && role === "admin" && (
+                <>
+                  <NavLink
+                    to="/dashboard/add-class"
+                    className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
+                  >
+                    <span className=" flex justify-start items-center font-semibold ">
+                      <MdFeaturedVideo className="text-red-500 mr-3" />
+                      Add CLass
+                    </span>
+                  </NavLink>
+                  <hr />
+                  <NavLink
+                    to="/dashboard/users"
+                    className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
+                  >
+                    <span className=" flex justify-start items-center font-semibold ">
+                      <MdFeaturedVideo className="text-red-500 mr-3" />
+                      Manage Users
+                    </span>
+                  </NavLink>
+                  <hr />
+                  <NavLink
+                    to="/dashboard/all-class"
+                    className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
+                  >
+                    <span className=" flex justify-start items-center font-semibold ">
+                      <MdFeaturedVideo className="text-red-500 mr-3" />
+                      All Class
+                    </span>
+                  </NavLink>
+                  <hr />
+                </>
+              )}
             </div>
           </aside>
           <section className="col-span-3 ">

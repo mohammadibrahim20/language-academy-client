@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
+import ManageClass from "../Pages/DashboardCompo/Admin/ManageClass";
+import ManageUser from "../Pages/DashboardCompo/Admin/ManageUser";
 import AddClass from "../Pages/DashboardCompo/Instructor/AddClass";
+import ModalForm from "../Pages/DashboardCompo/Instructor/ModalForm";
 import MyClass from "../Pages/DashboardCompo/Instructor/MyClass";
 import Classes from "../Pages/Home/Classes/Classes";
 import Home from "../Pages/Home/Home/Home";
@@ -48,6 +51,18 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/my-classes",
         element: <MyClass />,
+      },
+      {
+        path: "/dashboard/update-class/:id",
+        element: <ModalForm />,
+      },
+      {
+        path: "/dashboard/users",
+        element: <ManageUser />,
+      },
+      {
+        path: "/dashboard/all-class",
+        element: <ManageClass />,
       },
     ],
   },

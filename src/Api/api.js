@@ -6,7 +6,7 @@ export const saveUser = (user, role) => {
     role: role,
   };
   axios
-    .put(`http://localhost:5000/users/${user?.email}`, currentUser)
+    .patch(`http://localhost:5000/users/${user?.email}`, currentUser)
     .then((res) => {
       console.log(res.data);
     });

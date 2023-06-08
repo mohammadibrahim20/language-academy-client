@@ -1,17 +1,11 @@
 import { BiBookReader } from "react-icons/bi";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { MdMessage, MdPersonAddAlt1 } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const CLassRow = ({ row, openModel }) => {
-  const {
-    title,
-    seat_capacity,
-    price,
-    status,
-    calss_image,
-    enrolled,
-    _id
-  } = row;
+  const { title, seat_capacity, price, status, calss_image, enrolled, _id } =
+    row;
   return (
     <>
       <tr>
@@ -37,15 +31,17 @@ const CLassRow = ({ row, openModel }) => {
             <strong>{enrolled}</strong>
           </div>
           <div className="flex justify-center items-center gap-3">
-            {" "}
-            <HiOutlineCurrencyDollar className="text-sky-600" />{" "}
+            <HiOutlineCurrencyDollar className="text-sky-600" />
             <strong>{price}</strong>
           </div>
         </td>
         <td>
-          <button onClick={()=>openModel(row)} className="btn btn-success rounded-none btn-sm">
+          <Link
+            to={`/dashboard/update-class/${_id}`}
+            className="btn btn-success rounded-none btn-sm"
+          >
             Update
-          </button>
+          </Link>
         </td>
         <th>
           <div>

@@ -1,22 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import useAuth from "../../../Hooks/useAuth";
-import CLassRow from "./CLassRow";
+import CLassRow from "../Instructor/CLassRow";
 
-const MyClass = () => {
-  const { user } = useAuth();
-
+const ManageClass = () => {
   const [classData, setClassData] = useState([]);
 
   useEffect(() => {
-    if (user) {
-      axios.get(`http://localhost:5000/my-class/${user.email}`).then((res) => {
-        setClassData(res.data);
-      });
-    }
-  }, [user]);
-  //   console.log(classData);
-
+    axios.get(`http://localhost:5000/all-class`).then((res) => {
+      setClassData(res.data);
+    });
+  }, []);
   return (
     <div>
       <div className=" bg-white shadow-xl rounded-lg px-5 py-7 space-y-3">
@@ -49,4 +42,4 @@ const MyClass = () => {
   );
 };
 
-export default MyClass;
+export default ManageClass;
