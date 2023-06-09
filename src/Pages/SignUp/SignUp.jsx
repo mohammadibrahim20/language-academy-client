@@ -1,6 +1,7 @@
 import { updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { saveUser } from "../../Api/api";
 import useAuth from "../../Hooks/useAuth";
 import loginImg from "../../assets/background/share.png";
@@ -8,6 +9,7 @@ import GoogleLogin from "../Shared/GoogleLogin/GoogleLogin";
 import SubBanner from "../Shared/SubBanner/SUbBanner";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -19,17 +21,20 @@ const SignUp = () => {
 
   const onSubmit = (data) => {
     createUser(data.email, data.password)
-      .then((data) => {
-        const user = data.user;
-        console.log(user);
+      .then((res) => {
+        const user = res.user;
+        // console.log(user);
+
+        console.log(data.photo, data.name);
         updateProfile(auth.currentUser, {
           displayName: data.name,
           photoURL: data.photo,
         })
           .then(() => {
             // toast.success("New Account Successfully created");
-            saveUser(user.email, "student");
-            alert("successfully created account");
+            saveUser(user.email, "student", data.photo, data.name);
+            toast.success("successfully created account");
+            navigate("/");
           })
           .catch((error) => console.log(error));
       })

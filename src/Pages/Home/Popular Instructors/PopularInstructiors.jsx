@@ -11,7 +11,8 @@ const PopularInstructiors = () => {
             title="Popular Instructors"
             subTitle="Our Most Popular Instructors"
             label="All Instructors"
-            description="Popular Classes"
+            description="Our Super Popular Instructors"
+            path="/instructors"
           />
           <div className="grid grid-cols-3 my-10">
             <div className="card w-96 bg-base-100 shadow-xl">

@@ -1,10 +1,11 @@
 import axios from "axios";
 
-export const saveUser = (user, role, photo) => {
+export const saveUser = (user, role, photo, name) => {
   const currentUser = {
     email: user,
     role: role,
     user_photo: photo,
+    user_name: name,
   };
   axios
     .patch(`http://localhost:5000/users/${user?.email}`, currentUser)
