@@ -59,7 +59,8 @@ const Navbar = () => {
               {nav}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          {/* <a className="btn btn-ghost normal-case text-xl">LanguageAcademy</a> */}
+          <img className="h-12" src="https://www.languageacademy.org.in/wp-content/uploads/2019/01/Logo-language-academy.png" alt="" />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{nav}</ul>

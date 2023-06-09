@@ -67,24 +67,7 @@ const Dashboard = () => {
                       My CLass
                     </span>
                   </NavLink>
-                  <NavLink
-                    to="/dashboard/myclass"
-                    className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
-                  >
-                    <span className="flex justify-start items-center font-semibold ">
-                      <MdFeaturedVideo className="text-red-500 mr-3" />
-                      My CLass
-                    </span>
-                  </NavLink>
-                  <NavLink
-                    to="/dashboard/myclass"
-                    className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
-                  >
-                    <span className="flex justify-start items-center font-semibold ">
-                      <MdFeaturedVideo className="text-red-500 mr-3" />
-                      My CLass
-                    </span>
-                  </NavLink>
+                
                 </>
               )}
 

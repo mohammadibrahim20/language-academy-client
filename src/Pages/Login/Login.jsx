@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import loginImg from "../../assets/background/share.png";
@@ -22,6 +23,7 @@ const Login = () => {
       .then((loggedUser) => {
         const user = loggedUser.user;
         console.log(user);
+        toast.success("login Successfully")
         
       })
       .catch((error) => console.log(error));

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import useAuth from "../../../Hooks/useAuth";
 
 const AddClass = () => {
@@ -43,7 +44,7 @@ const AddClass = () => {
           };
           axios.post(`http://localhost:5000/add-class`, doc).then((res) => {
             console.log(res.data);
-            alert("uploaded successfully");
+            toast.success("uploaded successfully");
           });
         }
       });

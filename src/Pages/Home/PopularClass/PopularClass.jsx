@@ -22,6 +22,7 @@ const PopularClass = () => {
             subTitle="Our Most Popular Classes"
             label="All Classes"
             description="Popular Classes"
+            path="/classes"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 my-10 gap-5">
             {classData.map((card) => (
