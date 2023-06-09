@@ -1,11 +1,70 @@
+import axios from "axios";
 import { BiBookReader } from "react-icons/bi";
 import { FcApproval } from "react-icons/fc";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { MdMessage, MdOutlineCancel, MdPersonAddAlt1 } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const AllClassRow = ({ row }) => {
   const { title, seat_capacity, price, status, calss_image, enrolled, _id } =
     row;
+
+  const handleDeny = (row) => {
+    Swal.fire({
+      title: "Class Denied",
+      icon: "question",
+      text: "Feedback Message",
+      input: "text",
+      inputAttributes: {
+        autocapitalize: "off",
+      },
+      showCancelButton: true,
+      confirmButtonText: "Send Feedback",
+      showLoaderOnConfirm: true,
+      preConfirm: (text) => {
+        console.log(text);
+        console.log(row._id);
+        const doc = { feedback: text, status: "denied" };
+        axios
+          .put(`http://localhost:5000/update-class/${row._id}`, doc)
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((err) => console.log(err));
+      },
+      allowOutsideClick: () => !Swal.isLoading(),
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `Successfully send your Feedback and update role status`,
+          imageUrl: result.value.avatar_url,
+        });
+      }
+    });
+  };
+  const handleApprove = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Class Approve!",
+      icon: "success",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, approved!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const doc = { status: "approved", feedback: false };
+        axios
+          .put(`http://localhost:5000/update-class/${id}`, doc)
+          .then((res) => {
+            console.log(res.data);
+            Swal.fire("Approved!", "Your class is approved.", "success");
+          })
+          .catch((err) => console.log(err));
+      }
+    });
+  };
+
   return (
     <>
       <tr>
@@ -57,13 +116,21 @@ const AllClassRow = ({ row }) => {
         </td>
         <td className="h-24 space-y-3">
           <div>
-            <button title="approve" className="btn btn-xs btn-outline border-green-500 w-full">
+            <button
+              title="approve"
+              onClick={() => handleApprove(_id)}
+              className="btn btn-xs btn-outline border-green-500 w-full"
+            >
               <FcApproval className="text-xl" />
             </button>
           </div>
           <div>
-            <button title="Deny"  className="btn btn-error btn-xs w-full">
-              <MdOutlineCancel  className="text-xl text-white" />
+            <button
+              onClick={() => handleDeny(row)}
+              title="Deny"
+              className="btn btn-error btn-xs w-full"
+            >
+              <MdOutlineCancel className="text-xl text-white" />
             </button>
           </div>
         </td>
