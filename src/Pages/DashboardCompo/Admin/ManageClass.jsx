@@ -4,12 +4,13 @@ import AllClassRow from "./AllClassRow";
 
 const ManageClass = () => {
   const [classData, setClassData] = useState([]);
+  const [isChange, setCange] = useState(false)
 
   useEffect(() => {
     axios.get(`http://localhost:5000/all-class`).then((res) => {
       setClassData(res.data);
     });
-  }, []);
+  }, [isChange]);
   return (
     <div>
       <div className=" bg-white shadow-xl rounded-lg px-5 py-7 space-y-3">
@@ -31,7 +32,7 @@ const ManageClass = () => {
             <tbody>
               {/* row 1 */}
               {classData?.map((row) => (
-                <AllClassRow key={row._id} row={row} />
+                <AllClassRow key={row._id} row={row} setCange={setCange} />
               ))}
             </tbody>
           </table>

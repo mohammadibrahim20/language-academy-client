@@ -1,17 +1,22 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { saveUser } from "../../../Api/api";
 import useAuth from "../../../Hooks/useAuth";
 
 const GoogleLogin = () => {
   const { signinWithGoogle } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/chef";
 
   const googleLogin = () => {
     signinWithGoogle()
       .then((loggedUser) => {
         const user = loggedUser.user;
         console.log(user);
-        saveUser(user.email, "student");
+        saveUser(user.email, "student", loggedUser.photoURL);
         toast.success("login Successfully");
+        navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
   };

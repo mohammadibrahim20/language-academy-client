@@ -1,9 +1,10 @@
 import axios from "axios";
 
-export const saveUser = (user, role) => {
+export const saveUser = (user, role, photo) => {
   const currentUser = {
     email: user,
     role: role,
+    user_photo: photo,
   };
   axios
     .patch(`http://localhost:5000/users/${user?.email}`, currentUser)
@@ -12,8 +13,8 @@ export const saveUser = (user, role) => {
     });
 };
 
-export const getRole = async email => {
-  const response = await fetch(`http://localhost:5000/user/${email}`)
-  const user = await response.json()
-  return user?.role
-}
+export const getRole = async (email) => {
+  const response = await fetch(`http://localhost:5000/user/${email}`);
+  const user = await response.json();
+  return user?.role;
+};

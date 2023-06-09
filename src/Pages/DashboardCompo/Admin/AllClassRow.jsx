@@ -2,10 +2,10 @@ import axios from "axios";
 import { BiBookReader } from "react-icons/bi";
 import { FcApproval } from "react-icons/fc";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
-import { MdMessage, MdOutlineCancel, MdPersonAddAlt1 } from "react-icons/md";
+import { MdOutlineCancel, MdPersonAddAlt1 } from "react-icons/md";
 import Swal from "sweetalert2";
 
-const AllClassRow = ({ row }) => {
+const AllClassRow = ({ row, setCange }) => {
   const { title, seat_capacity, price, status, calss_image, enrolled, _id } =
     row;
 
@@ -22,13 +22,13 @@ const AllClassRow = ({ row }) => {
       confirmButtonText: "Send Feedback",
       showLoaderOnConfirm: true,
       preConfirm: (text) => {
-        console.log(text);
-        console.log(row._id);
+       
         const doc = { feedback: text, status: "denied" };
         axios
           .put(`http://localhost:5000/update-class/${row._id}`, doc)
           .then((res) => {
             console.log(res.data);
+            setCange(true)
           })
           .catch((err) => console.log(err));
       },
@@ -107,9 +107,7 @@ const AllClassRow = ({ row }) => {
             {status === "denied" && (
               <>
                 <p className="badge badge-error gap-2 mb-3">{status}</p>
-                <button className="btn btn-outline  btn-xs">
-                  <MdMessage className="text-blue-500 cursor-pointer  text-center" />
-                </button>
+               
               </>
             )}
           </div>
@@ -117,6 +115,7 @@ const AllClassRow = ({ row }) => {
         <td className="h-24 space-y-3">
           <div>
             <button
+              disabled={status === "denied"}
               title="approve"
               onClick={() => handleApprove(_id)}
               className="btn btn-xs btn-outline border-green-500 w-full"
@@ -128,6 +127,7 @@ const AllClassRow = ({ row }) => {
             <button
               onClick={() => handleDeny(row)}
               title="Deny"
+              disabled={status === "denied"}
               className="btn btn-error btn-xs w-full"
             >
               <MdOutlineCancel className="text-xl text-white" />
