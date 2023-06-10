@@ -117,6 +117,16 @@ const Dashboard = () => {
                   </NavLink>
                   <hr />
                   <NavLink
+                    to="/dashboard/enrolled"
+                    className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
+                  >
+                    <span className=" flex justify-start items-center font-semibold ">
+                      <MdFeaturedVideo className="text-red-500 mr-3" />
+                      Enrolled Class
+                    </span>
+                  </NavLink>
+                  <hr />
+                  <NavLink
                     to="/dashboard/payment-history"
                     className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
                   >

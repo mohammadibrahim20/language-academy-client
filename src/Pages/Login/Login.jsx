@@ -13,7 +13,7 @@ const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/chef";
+  const from = location.state?.from?.pathname || "/";
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);

@@ -9,6 +9,7 @@ import MyClass from "../Pages/DashboardCompo/Instructor/MyClass";
 import EnrolledClass from "../Pages/DashboardCompo/Student/EnrolledClass";
 import MySelectedClass from "../Pages/DashboardCompo/Student/MySelectedClass";
 import PaymentHistory from "../Pages/DashboardCompo/Student/PaymentHistory";
+import ErrorPage from "../Pages/Error/ErrorPage";
 import Classes from "../Pages/Home/Classes/Classes";
 import Home from "../Pages/Home/Home/Home";
 import Instructors from "../Pages/Instructors/Instructors";
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    errorElement: <p>Error</p>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "/",

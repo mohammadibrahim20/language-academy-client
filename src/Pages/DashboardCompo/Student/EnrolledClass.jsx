@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import ClassList from "./ClassList";
 
 const EnrolledClass = () => {
   const { user, loading } = useAuth();
@@ -29,16 +30,15 @@ const EnrolledClass = () => {
           {/* head */}
           <thead className="rounded-none bg-gray-200 text-black">
             <tr>
-              <th>Title</th>
-              <th>Instructor</th>
+              <th>Description</th>
+              <th>Enrolled</th>
               <th>Price</th>
-              <th>Date</th>
-              <th>Transaction Id</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            {payments?.map((payment) => (
-             <p key={payment._id}>hi</p>
+            {payments?.map((enrol) => (
+              <ClassList key={enrol._id} classList={enrol} />
             ))}
           </tbody>
         </table>

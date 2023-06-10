@@ -57,9 +57,9 @@ const MySelectedClass = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {bookings?.map((booking) => (
+              {bookings?.map((booking, index) => (
                 <ClassRow
-                  key={booking._id}
+                  key={index + 1}
                   booking={booking}
                   refetch={refetch}
                   openModal={openModal}

@@ -7,7 +7,7 @@ const GoogleLogin = () => {
   const { signinWithGoogle } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/chef";
+  const from = location.state?.from?.pathname || "/";
 
   const googleLogin = () => {
     signinWithGoogle()

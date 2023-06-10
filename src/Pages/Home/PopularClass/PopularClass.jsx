@@ -10,7 +10,7 @@ const PopularClass = () => {
   useEffect(() => {
     axios.get(`http://localhost:5000/all-class`).then((res) => {
       console.log(res.data);
-      setClassData(res.data);
+      setClassData(res.data.slice(0,6));
     });
   }, []);
   return (

@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import "./CheckoutForm.css";
@@ -43,9 +44,11 @@ const CheckoutForm = ({ bookingPay }) => {
 
     if (error) {
       console.log("error", error);
+      setProcessing(false);
       setCardError(error.message);
     } else {
-      setCardError("");
+      setCardError(" ");
+      setProcessing(false);
     }
 
     setProcessing(true);
@@ -63,6 +66,8 @@ const CheckoutForm = ({ bookingPay }) => {
 
     if (confirmError) {
       console.log(confirmError);
+      setProcessing(false);
+
       setCardError(confirmError.message);
     }
 
@@ -70,18 +75,36 @@ const CheckoutForm = ({ bookingPay }) => {
 
     if (paymentIntent.status === "succeeded") {
       const paymentInfo = {
-        ...bookingPay,
+        // ...bookingPay,
 
         transactionId: paymentIntent.id,
         date: new Date(),
       };
-      axiosSecure.post("/bookings", paymentInfo).then((res) => {
-        // console.log(res.data.insertedId);
-        if (res.data.inserted) {
-          setProcessing(false);
-          navigate("/dashboard/payment-history");
+      axiosSecure
+        .patch(`/booking/update/${bookingPay._id}`, paymentInfo)
+        .then((res) => {
+          console.log(res.data);
+          toast.success("payment success");
+          if (res.data) {
+          console.log(bookingPay.bookingId);
+          // navigate("/dashboard/enrolled");
+          axiosSecure
+            .put(`/enrolled/${bookingPay.bookingId}`)
+            .then((data) => {
+              console.log(data)
+              toast.success("pay and updated");
+              setProcessing(false);
+            })
+            .catch((err) => {
+              setProcessing(false);
+              console.log(err);
+            });
         }
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+          setProcessing(false);
+        });
     }
   };
 
