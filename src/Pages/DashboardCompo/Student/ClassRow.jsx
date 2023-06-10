@@ -4,7 +4,7 @@ import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { MdOutlineCancel, MdPersonAddAlt1 } from "react-icons/md";
 import Swal from "sweetalert2";
 
-const ClassRow = ({ booking }) => {
+const ClassRow = ({ booking, refetch, openModal }) => {
   const { title, seat_capacity, price, status, calss_image, enrolled, _id } =
     booking;
 
@@ -19,12 +19,12 @@ const ClassRow = ({ booking }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
-          .delete(`http://localhost:5000/delete-book/${id}`)
-          .then((res) => {
-            Swal.fire("Deleted!", "Your file has been deleted.", "success");
-            console.log(res.data);
-          });
+        axios.delete(`http://localhost:5000/delete-book/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire("Deleted!", "Your class has been deleted.", "success");
+          }
+        });
       }
     });
   };
@@ -69,6 +69,7 @@ const ClassRow = ({ booking }) => {
       </td>
       <td className="h-24 space-y-3">
         <button
+          onClick={() => openModal(booking)}
           title="approve"
           className="btn btn-xs btn-outline border-green-500 w-full"
         >

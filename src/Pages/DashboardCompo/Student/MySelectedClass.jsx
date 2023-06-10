@@ -1,12 +1,15 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import ModalData from "../Payment/ModalData";
 import ClassRow from "./ClassRow";
 
 const MySelectedClass = () => {
-  const { user } = useAuth();
-  const [bookings, setBookings] = useState();
+  const { user, loading } = useAuth();
 
+  const [bookingPay, setBookingPay] = useState({});
+  const [axiosSecure] = useAxiosSecure();
   /*   const { data: bookings = [], refetch } = useQuery(
     ["my-class", user?.email],
     async () => {
@@ -16,11 +19,23 @@ const MySelectedClass = () => {
       return res.data;
     }
   ); */
-  useEffect(() => {
-    axios.get(`http://localhost:5000/my-class/${user?.email}`).then((data) => {
-      setBookings(data.data);
-    });
-  }, [user?.email]);
+  const { data: bookings = [], refetch } = useQuery({
+    queryKey: ["my-class", user?.email],
+    enabled: !loading,
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/my-class/${user?.email} `);
+      return res.data;
+    },
+  });
+  // useEffect(() => {
+  //   axios.get(`http://localhost:5000/my-class/${user?.email}`).then((data) => {
+  //     setBookings(data.data);
+  //   });
+  // }, [user?.email]);
+  const openModal = (booking) => {
+    window.my_modal_3.showModal();
+    setBookingPay(booking);
+  };
 
   return (
     <div>
@@ -46,12 +61,27 @@ const MySelectedClass = () => {
                 <ClassRow
                   key={booking._id}
                   booking={booking}
+                  refetch={refetch}
+                  openModal={openModal}
                 />
               ))}
             </tbody>
           </table>
         </div>
       </div>
+      <dialog id="my_modal_3" className="modal">
+        <div method="dialog" className="modal-box">
+          <button
+            htmlFor="my-modal-3"
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          >
+            ✕
+          </button>
+          <h3 className="font-bold text-lg text-blue-600 pb-3">Payment Now!</h3>
+          <hr />
+          <ModalData bookingPay={bookingPay} />
+        </div>
+      </dialog>
     </div>
   );
 };
