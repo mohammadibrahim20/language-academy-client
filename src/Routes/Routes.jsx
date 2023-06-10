@@ -15,12 +15,13 @@ import Home from "../Pages/Home/Home/Home";
 import Instructors from "../Pages/Instructors/Instructors";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -46,7 +47,12 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+
     children: [
       {
         path: "/dashboard/add-class",
@@ -70,16 +76,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/my-book-class",
-        element: <MySelectedClass/>
+        element: <MySelectedClass />,
       },
       {
         path: "/dashboard/payment-history",
-        element: <PaymentHistory/>
+        element: <PaymentHistory />,
       },
       {
         path: "/dashboard/enrolled",
-        element: <EnrolledClass/>
-      }
+        element: <EnrolledClass />,
+      },
     ],
   },
 ]);

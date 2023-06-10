@@ -2,7 +2,7 @@
 
 #### A summer camp leaning school
 
-<img src="https://www.languageacademy.org.in/wp-content/uploads/2019/01/Logo-language-academy.png" height="240" width="480">
+<img src="https://www.languageacademy.org.in/wp-content/uploads/2019/01/Logo-language-academy.png" height="200" width="480">
 
 ## All Feature of The Toy Shop Project
 
