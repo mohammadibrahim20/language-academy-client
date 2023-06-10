@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import "./CheckoutForm.css";
-const CheckoutForm = ({bookingPay }) => {
+const CheckoutForm = ({ bookingPay }) => {
   const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
@@ -14,13 +14,11 @@ const CheckoutForm = ({bookingPay }) => {
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
 
-  //   1.  get clientSecret from backend
   useEffect(() => {
     if (bookingPay.price > 0) {
       axiosSecure
         .post("/create-payment-intent", { price: bookingPay.price })
         .then((res) => {
-        //   console.log("new",res.data.clientSecret);
           setClientSecret(res.data.clientSecret);
         });
     }
@@ -48,7 +46,6 @@ const CheckoutForm = ({bookingPay }) => {
       setCardError(error.message);
     } else {
       setCardError("");
-      // console.log('payment method', paymentMethod)
     }
 
     setProcessing(true);
@@ -72,15 +69,18 @@ const CheckoutForm = ({bookingPay }) => {
     console.log("payment intent", paymentIntent);
 
     if (paymentIntent.status === "succeeded") {
-      // save payment information to the server
       const paymentInfo = {
         ...bookingPay,
+
         transactionId: paymentIntent.id,
         date: new Date(),
       };
       axiosSecure.post("/bookings", paymentInfo).then((res) => {
-        console.log(res.data.insertedId);
-     
+        // console.log(res.data.insertedId);
+        if (res.data.inserted) {
+          setProcessing(false);
+          navigate("/dashboard/payment-history");
+        }
       });
     }
   };

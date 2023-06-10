@@ -61,6 +61,7 @@ const ClassRow = ({ booking, refetch, openModal }) => {
         <button
           onClick={() => handleDelte(_id)}
           className="btn btn-error btn-sm w-full"
+          disabled={booking.date}
         >
           <span className="flex justify-center items-center gap-1 ">
             <MdOutlineCancel className="text-xl text-white" /> Delete
@@ -69,8 +70,8 @@ const ClassRow = ({ booking, refetch, openModal }) => {
       </td>
       <td className="h-24 space-y-3">
         <button
+        disabled={booking.date}
           onClick={() => openModal(booking)}
-          title="approve"
           className="btn btn-xs btn-outline border-green-500 w-full"
         >
           Pay

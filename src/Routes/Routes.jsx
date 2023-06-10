@@ -6,7 +6,9 @@ import ManageUser from "../Pages/DashboardCompo/Admin/ManageUser";
 import AddClass from "../Pages/DashboardCompo/Instructor/AddClass";
 import ModalForm from "../Pages/DashboardCompo/Instructor/ModalForm";
 import MyClass from "../Pages/DashboardCompo/Instructor/MyClass";
+import EnrolledClass from "../Pages/DashboardCompo/Student/EnrolledClass";
 import MySelectedClass from "../Pages/DashboardCompo/Student/MySelectedClass";
+import PaymentHistory from "../Pages/DashboardCompo/Student/PaymentHistory";
 import Classes from "../Pages/Home/Classes/Classes";
 import Home from "../Pages/Home/Home/Home";
 import Instructors from "../Pages/Instructors/Instructors";
@@ -68,6 +70,14 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/my-book-class",
         element: <MySelectedClass/>
+      },
+      {
+        path: "/dashboard/payment-history",
+        element: <PaymentHistory/>
+      },
+      {
+        path: "/dashboard/enrolled",
+        element: <EnrolledClass/>
       }
     ],
   },

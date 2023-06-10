@@ -104,9 +104,9 @@ const Dashboard = () => {
                   <hr />
                 </>
               )}
-              {user && user.email && role === "student" && <>
-              
-              <NavLink
+              {user && user.email && role === "student" && (
+                <>
+                  <NavLink
                     to="/dashboard/my-book-class"
                     className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
                   >
@@ -116,7 +116,18 @@ const Dashboard = () => {
                     </span>
                   </NavLink>
                   <hr />
-              </>}
+                  <NavLink
+                    to="/dashboard/payment-history"
+                    className="my-2 w-full btn justify-start border-l-2 border-l-red-300"
+                  >
+                    <span className=" flex justify-start items-center font-semibold ">
+                      <MdFeaturedVideo className="text-red-500 mr-3" />
+                      Payment History
+                    </span>
+                  </NavLink>
+                  <hr />
+                </>
+              )}
             </div>
           </aside>
           <section className="col-span-3 ">
