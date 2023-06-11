@@ -15,7 +15,7 @@ const PopularInstructiors = () => {
   return (
     <div className="bg-popular pb-5">
       <ContainerXL>
-        <div className="my-32">
+        <div className="my-5 md:my-32">
           <Headers
             title="Popular Instructors"
             subTitle="Our Most Popular Instructors"
@@ -23,7 +23,7 @@ const PopularInstructiors = () => {
             description="Our Super Popular Instructors"
             path="/instructors"
           />
-          <div className="grid grid-cols-3 gap-5 my-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 my-10">
             {data?.map((useCard) => (
               <Card key={useCard._id} useCard={useCard} />
             ))}

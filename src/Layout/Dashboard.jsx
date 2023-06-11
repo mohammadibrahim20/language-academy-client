@@ -1,3 +1,4 @@
+import { Fade, Slide } from "react-awesome-reveal";
 import { MdFeaturedVideo } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
@@ -29,8 +30,12 @@ const Dashboard = () => {
                 />
               </div>
               <div className="text-center mt-2">
-                <h2 className="font-semibold">{user?.displayName}</h2>
-                <p className="text-gray-500">{role}</p>
+                <Slide>
+                  <h2 className="font-semibold">{user?.displayName}</h2>
+                </Slide>
+                <Fade cascade>
+                  <p className="text-gray-500 uppercase font-semibold">{role}</p>
+                </Fade>
               </div>
               <div className="p-4 border-t mx-8 mt-2">
                 <Link

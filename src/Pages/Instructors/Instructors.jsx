@@ -25,7 +25,7 @@ const Instructors = () => {
             description="Our all Instructors"
             path="/"
           />
-          <div className="grid grid-cols-3 gap-5 my-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 my-10">
             {data?.map((useCard) => (
               <Card key={useCard._id} useCard={useCard} />
             ))}

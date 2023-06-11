@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import ContainerXL from "../../../components/ContainerXL";
 
@@ -60,7 +60,13 @@ const Navbar = () => {
             </ul>
           </div>
           {/* <a className="btn btn-ghost normal-case text-xl">LanguageAcademy</a> */}
-          <img className="h-12" src="https://www.languageacademy.org.in/wp-content/uploads/2019/01/Logo-language-academy.png" alt="" />
+          <Link to="/">
+            <img
+              className="h-8 md:h-12"
+              src="https://www.languageacademy.org.in/wp-content/uploads/2019/01/Logo-language-academy.png"
+              alt=""
+            />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{nav}</ul>

@@ -1,4 +1,5 @@
 import Bannerr from "../Banner/Banner";
+import ExtraPage from "../ExtraPage/ExtraPage";
 import PopularInstructiors from "../Popular Instructors/PopularInstructiors";
 import PopularClass from "../PopularClass/PopularClass";
 
@@ -8,6 +9,7 @@ const Home = () => {
       <Bannerr />
       <PopularClass />
       <PopularInstructiors/>
+      <ExtraPage/>
     </div>
   );
 };

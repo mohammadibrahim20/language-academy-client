@@ -56,35 +56,67 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/add-class",
-        element: <AddClass />,
+        element: (
+          <PrivateRoute>
+            <AddClass />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/my-classes",
-        element: <MyClass />,
+        element: (
+          <PrivateRoute>
+            <MyClass />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/update-class/:id",
-        element: <ModalForm />,
+        element: (
+          <PrivateRoute>
+            <ModalForm />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/users",
-        element: <ManageUser />,
+        element: (
+          <PrivateRoute>
+            <ManageUser />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/all-class",
-        element: <ManageClass />,
+        element: (
+          <PrivateRoute>
+            <ManageClass />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/my-book-class",
-        element: <MySelectedClass />,
+        element: (
+          <PrivateRoute>
+            <MySelectedClass />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/payment-history",
-        element: <PaymentHistory />,
+        element: (
+          <PrivateRoute>
+            <PaymentHistory />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/enrolled",
-        element: <EnrolledClass />,
+        element: (
+          <PrivateRoute>
+            <EnrolledClass />
+          </PrivateRoute>
+        ),
       },
     ],
   },

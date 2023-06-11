@@ -16,7 +16,7 @@ const PopularClass = () => {
   return (
     <div className="bg-popular pb-5">
       <ContainerXL>
-        <div className="my-32">
+        <div className="my-5 md:my-32">
           <Headers
             title="Popular Classes"
             subTitle="Our Most Popular Classes"
