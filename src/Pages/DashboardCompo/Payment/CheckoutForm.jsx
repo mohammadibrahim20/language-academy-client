@@ -86,20 +86,28 @@ const CheckoutForm = ({ bookingPay }) => {
           console.log(res.data);
           toast.success("payment success");
           if (res.data) {
-          console.log(bookingPay.bookingId);
-          // navigate("/dashboard/enrolled");
-          axiosSecure
-            .put(`/enrolled/${bookingPay.bookingId}`)
-            .then((data) => {
-              console.log(data)
-              toast.success("pay and updated");
-              setProcessing(false);
-            })
-            .catch((err) => {
-              setProcessing(false);
-              console.log(err);
-            });
-        }
+            console.log(bookingPay.bookingId);
+            // navigate("/dashboard/enrolled");
+            const seat_capacity = bookingPay.seat_capacity
+            const enrolled = bookingPay.enrolled
+            const doc = {
+              seat_capacity,
+              enrolled,
+            };
+            console.log(doc);
+            axiosSecure
+              .put(`/enrolled/${bookingPay.bookingId}`, doc)
+              .then((data) => {
+                console.log(data);
+                navigate('/dashboard/enrolled')
+                toast.success("pay and updated");
+                setProcessing(false);
+              })
+              .catch((err) => {
+                setProcessing(false);
+                console.log(err);
+              });
+          }
         })
         .catch((error) => {
           console.log(error);

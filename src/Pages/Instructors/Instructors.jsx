@@ -8,7 +8,7 @@ import Card from "./Card";
 const Instructors = () => {
   const [data, setData] = useState();
   useEffect(() => {
-    axios.get(`http://localhost:5000/instructors`).then((res) => {
+    axios.get(`https://assignment-final-server.vercel.app/instructors`).then((res) => {
       console.log(res.data);
       setData(res.data);
     });

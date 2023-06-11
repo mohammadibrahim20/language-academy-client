@@ -8,7 +8,7 @@ import SubBanner from "../../Shared/SubBanner/SUbBanner";
 const Classes = () => {
   const [classData, setClassData] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5000/all-class`).then((res) => {
+    axios.get(`https://assignment-final-server.vercel.app/all-class`).then((res) => {
       console.log(res.data);
       setClassData(res.data);
     });

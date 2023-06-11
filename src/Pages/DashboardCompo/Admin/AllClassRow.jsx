@@ -4,11 +4,12 @@ import { FcApproval } from "react-icons/fc";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { MdOutlineCancel, MdPersonAddAlt1 } from "react-icons/md";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const AllClassRow = ({ row, setCange }) => {
   const { title, seat_capacity, price, status, calss_image, enrolled, _id } =
     row;
-
+  const [axiosSecure] = useAxiosSecure();
   const handleDeny = (row) => {
     Swal.fire({
       title: "Class Denied",
@@ -22,13 +23,12 @@ const AllClassRow = ({ row, setCange }) => {
       confirmButtonText: "Send Feedback",
       showLoaderOnConfirm: true,
       preConfirm: (text) => {
-       
         const doc = { feedback: text, status: "denied" };
-        axios
-          .put(`http://localhost:5000/update-class/${row._id}`, doc)
-          .then((res) => {
-            console.log(res.data);
-            setCange(true)
+        axiosSecure
+          .put(`https://assignment-final-server.vercel.app/update-class/${row._id}`, doc)
+          .then(() => {
+            // console.log(res.data);
+            setCange(true);
           })
           .catch((err) => console.log(err));
       },
@@ -55,7 +55,7 @@ const AllClassRow = ({ row, setCange }) => {
       if (result.isConfirmed) {
         const doc = { status: "approved", feedback: false };
         axios
-          .put(`http://localhost:5000/update-class/${id}`, doc)
+          .put(`https://assignment-final-server.vercel.app/update-class/${id}`, doc)
           .then((res) => {
             console.log(res.data);
             Swal.fire("Approved!", "Your class is approved.", "success");
@@ -107,7 +107,6 @@ const AllClassRow = ({ row, setCange }) => {
             {status === "denied" && (
               <>
                 <p className="badge badge-error gap-2 mb-3">{status}</p>
-               
               </>
             )}
           </div>

@@ -8,15 +8,15 @@ import "./PopularClass.css";
 const PopularClass = () => {
   const [classData, setClassData] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5000/all-class`).then((res) => {
+    axios.get(`https://assignment-final-server.vercel.app/popular-class`).then((res) => {
       console.log(res.data);
       setClassData(res.data.slice(0,6));
     });
   }, []);
   return (
-    <div className="bg-popular pb-5">
+    <div className="bg-popular pb-5 md:mt-24">
       <ContainerXL>
-        <div className="my-5 md:my-32">
+        <div className="my-5 md:mb-24">
           <Headers
             title="Popular Classes"
             subTitle="Our Most Popular Classes"

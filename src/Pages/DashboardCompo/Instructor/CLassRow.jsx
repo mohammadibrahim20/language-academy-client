@@ -2,10 +2,25 @@ import { BiBookReader } from "react-icons/bi";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { MdMessage, MdPersonAddAlt1 } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CLassRow = ({ row, openModel }) => {
   const { title, seat_capacity, price, status, calss_image, enrolled, _id } =
     row;
+
+  const handleFeedback = (feedback) => {
+    console.log(feedback);
+    Swal.fire({
+      title: "Feedback: From Admin",
+      text: `Message: ${feedback}`,
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    });
+  };
   return (
     <>
       <tr>
@@ -56,7 +71,10 @@ const CLassRow = ({ row, openModel }) => {
             {status === "denied" && (
               <>
                 <p className="badge badge-error gap-2 mb-3">{status}</p>
-                <button className="btn btn-outline  btn-xs">
+                <button
+                  onClick={() => handleFeedback(row.feedback)}
+                  className="btn btn-outline  btn-xs"
+                >
                   <MdMessage className="text-blue-500 cursor-pointer  text-center" />
                 </button>
               </>

@@ -1,15 +1,19 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import AllClassRow from "./AllClassRow";
 
 const ManageClass = () => {
   const [classData, setClassData] = useState([]);
-  const [isChange, setCange] = useState(false)
+  const [isChange, setCange] = useState(false);
+
+  const [axiosSecure] = useAxiosSecure();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/all-class`).then((res) => {
-      setClassData(res.data);
-    });
+    axiosSecure
+      .get(`https://assignment-final-server.vercel.app/all-class`)
+      .then((res) => {
+        setClassData(res.data);
+      });
   }, [isChange]);
   return (
     <div>

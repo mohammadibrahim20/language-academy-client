@@ -14,7 +14,7 @@ const MySelectedClass = () => {
     ["my-class", user?.email],
     async () => {
       const res = await axios.get(
-        `http://localhost:5000/my-class/${user?.email}`
+        `https://assignment-final-server.vercel.app/my-class/${user?.email}`
       );
       return res.data;
     }
@@ -28,7 +28,7 @@ const MySelectedClass = () => {
     },
   });
   // useEffect(() => {
-  //   axios.get(`http://localhost:5000/my-class/${user?.email}`).then((data) => {
+  //   axios.get(`https://assignment-final-server.vercel.app/my-class/${user?.email}`).then((data) => {
   //     setBookings(data.data);
   //   });
   // }, [user?.email]);
@@ -73,9 +73,9 @@ const MySelectedClass = () => {
         <div method="dialog" className="modal-box">
           <button
             htmlFor="my-modal-3"
-            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            className="border-0 absolute right-2 top-2"
           >
-            ✕
+            ESC <small className="text-red-600 font-semibold">Close Modal</small>
           </button>
           <h3 className="font-bold text-lg text-blue-600 pb-3">Payment Now!</h3>
           <hr />

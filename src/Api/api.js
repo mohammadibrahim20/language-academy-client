@@ -8,14 +8,14 @@ export const saveUser = (user, role, photo, name) => {
     user_name: name,
   };
   axios
-    .patch(`http://localhost:5000/users/${user?.email}`, currentUser)
+    .patch(`https://assignment-final-server.vercel.app/users/${user?.email}`, currentUser )
     .then((res) => {
       console.log(res.data);
     });
 };
 
 export const getRole = async (email) => {
-  const response = await fetch(`http://localhost:5000/user/${email}`);
+  const response = await fetch(`https://assignment-final-server.vercel.app/user/${email}`);
   const user = await response.json();
   return user?.role;
 };

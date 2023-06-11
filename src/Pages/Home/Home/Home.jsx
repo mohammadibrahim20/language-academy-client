@@ -7,6 +7,7 @@ const Home = () => {
   return (
     <div>
       <Bannerr />
+
       <PopularClass />
       <PopularInstructiors/>
       <ExtraPage/>

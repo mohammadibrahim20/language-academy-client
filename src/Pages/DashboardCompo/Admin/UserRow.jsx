@@ -8,7 +8,7 @@ const UserRow = ({ userData, setIsChange }) => {
       role: role,
     };
     axios
-      .patch(`http://localhost:5000/users/${user}`, currentUser)
+      .patch(`https://assignment-final-server.vercel.app/users/${user}`, currentUser)
       .then((res) => {
         console.log(res.data);
         setIsChange(true);

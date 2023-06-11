@@ -42,7 +42,7 @@ const AddClass = () => {
             calss_image,
             enrolled: 0,
           };
-          axios.post(`http://localhost:5000/add-class`, doc).then((res) => {
+          axios.post(`https://assignment-final-server.vercel.app/add-class`, doc).then((res) => {
             console.log(res.data);
             toast.success("uploaded successfully");
           });

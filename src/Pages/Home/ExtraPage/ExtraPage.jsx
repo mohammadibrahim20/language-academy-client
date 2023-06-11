@@ -29,7 +29,7 @@ const ExtraPage = () => {
               that empowers individuals to become proficient communicators in a
               globalized world.
             </p>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <Fade>
                 <div className="flex justify-center items-center mt-5">
                   <span className="mr-5">

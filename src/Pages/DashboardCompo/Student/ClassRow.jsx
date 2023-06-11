@@ -19,7 +19,7 @@ const ClassRow = ({ booking, refetch, openModal }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/delete-book/${id}`).then((res) => {
+        axios.delete(`https://assignment-final-server.vercel.app/delete-book/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire("Deleted!", "Your class has been deleted.", "success");

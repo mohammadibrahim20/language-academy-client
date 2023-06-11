@@ -10,7 +10,7 @@ const MyClass = () => {
 
   useEffect(() => {
     if (user) {
-      axios.get(`http://localhost:5000/my-class/${user.email}`).then((res) => {
+      axios.get(`https://assignment-final-server.vercel.app/my-class/${user.email}`).then((res) => {
         setClassData(res.data);
       });
     }

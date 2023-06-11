@@ -6,7 +6,7 @@ const ManageUser = () => {
   const [users, setUser] = useState([]);
   const [isChange, setIsChange] = useState(true);
   useEffect(() => {
-    axios.get(`http://localhost:5000/users`).then((res) => {
+    axios.get(`https://assignment-final-server.vercel.app/users`).then((res) => {
       setUser(res.data);
     });
   }, [isChange]);

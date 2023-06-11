@@ -23,7 +23,7 @@ const ModalForm = () => {
     };
     alert("addd");
     axios
-      .put(`http://localhost:5000/update-class/${id}`, updatedDoc)
+      .put(`https://assignment-final-server.vercel.app/update-class/${id}`, updatedDoc)
       .then((res) => {
         console.log(res.data);
         alert("uploaded successfully");

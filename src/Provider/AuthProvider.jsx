@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (loggedUser) => {
       setUser(loggedUser);
       axios
-        .post("http://localhost:5000/jwt", {
+        .post("https://assignment-final-server.vercel.app/jwt", {
           email: loggedUser.email,
         })
         .then((data) => {
