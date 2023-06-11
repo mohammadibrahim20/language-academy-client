@@ -2,16 +2,22 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ContainerXL from "../../../components/ContainerXL";
 import Headers from "../../../components/Headers";
+import LodingCmpo from "../../../components/LodingCmpo";
 import Card from "../../Instructors/Card";
 
 const PopularInstructiors = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get(`https://assignment-final-server.vercel.app/instructors`).then((res) => {
-      console.log(res.data);
-      setData(res.data.slice(0, 6));
-    });
+    axios
+      .get(`https://assignment-final-server.vercel.app/instructors`)
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data.slice(0, 6));
+        setLoading(false);
+      });
   }, []);
+
   return (
     <div className="bg-popular pb-5">
       <ContainerXL>
@@ -28,6 +34,7 @@ const PopularInstructiors = () => {
               <Card key={useCard._id} useCard={useCard} />
             ))}
           </div>
+          {loading && <LodingCmpo />}
         </div>
       </ContainerXL>
     </div>
