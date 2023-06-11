@@ -39,7 +39,7 @@ const ClassCard = ({ card }) => {
   };
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-100 shadow-xl" data-aos="fade-up">
       <figure className="px-5 pt-5  object-cover">
         <img
           src={calss_image}

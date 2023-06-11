@@ -3,7 +3,7 @@ import { MdOutlineMarkEmailRead } from "react-icons/md";
 const Card = ({useCard}) => {
   const { email, user_photo, user_name} = useCard
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-100 shadow-xl" data-aos="fade-right">
       <figure className="p-5 rounded" >
         <img
           src={user_photo ? user_photo : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'}
