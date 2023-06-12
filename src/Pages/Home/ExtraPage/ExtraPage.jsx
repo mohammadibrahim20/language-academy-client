@@ -14,7 +14,7 @@ const ExtraPage = () => {
   return (
     <div>
       <ContainerXL>
-        <div className="flex flex-col md:flex-row mt-5 md:mt-28 ">
+        <div className="flex flex-col md:flex-row mt-5 md:mt-28 mx-5">
           <div className="w-full text-left space-y-3">
             <p className="font-bold text-lg text-red-400">What’s New</p>
             <Fade cascade>

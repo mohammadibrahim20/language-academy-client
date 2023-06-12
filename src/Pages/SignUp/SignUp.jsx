@@ -32,7 +32,8 @@ const SignUp = () => {
         })
           .then(() => {
             // toast.success("New Account Successfully created");
-            saveUser(user.email, "student", data.photo, data.name);
+            saveUser(user.email, "student", data.photo, data.name)
+            
             toast.success("successfully created account");
             navigate("/");
           })
