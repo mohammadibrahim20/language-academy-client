@@ -1,6 +1,6 @@
-import 'aos/dist/aos.css';
+import "aos/dist/aos.css";
 
-import Aos from 'aos';
+import Aos from "aos";
 import { useEffect } from "react";
 import { Fade } from "react-awesome-reveal";
 import { FcReadingEbook } from "react-icons/fc";
@@ -8,9 +8,9 @@ import { FiAward, FiBookOpen, FiUserPlus } from "react-icons/fi";
 import join from "../../../assets/background/join.png";
 import ContainerXL from "../../../components/ContainerXL";
 const ExtraPage = () => {
-  useEffect(()=>{
+  useEffect(() => {
     Aos.init();
-  },[])
+  }, []);
   return (
     <div>
       <ContainerXL>
@@ -41,38 +41,36 @@ const ExtraPage = () => {
                 </div>
               </Fade>
               <Fade>
-
-              <div className="flex justify-center items-center mt-5">
-                <span className="mr-5">
-                  <FiUserPlus className="text-7xl p-3 text-red-400 bg-red-100 mask mask-squircle" />
-                </span>
-                <p className="font-semibold text-gray-500 text-lg">
-                  Keep up with in the latest in cloud
-                </p>
-              </div>
-              <div className="flex justify-center items-center mt-5">
-                <span className="mr-5">
-                  <FiAward className="p-3 text-red-400 text-7xl bg-red-100 mask mask-squircle" />
-                </span>
-                <p className="font-semibold text-gray-500 text-lg">
-                  Get certified with 100+ certification courses
-                </p>
-              </div>
+                <div className="flex justify-center items-center mt-5">
+                  <span className="mr-5">
+                    <FiUserPlus className="text-7xl p-3 text-red-400 bg-red-100 mask mask-squircle" />
+                  </span>
+                  <p className="font-semibold text-gray-500 text-lg">
+                    Keep up with in the latest in cloud
+                  </p>
+                </div>
+                <div className="flex justify-center items-center mt-5">
+                  <span className="mr-5">
+                    <FiAward className="p-3 text-red-400 text-7xl bg-red-100 mask mask-squircle" />
+                  </span>
+                  <p className="font-semibold text-gray-500 text-lg">
+                    Get certified with 100+ certification courses
+                  </p>
+                </div>
               </Fade>
               <Fade bounce>
-              <div className="flex justify-center items-center mt-5">
-                <span className="mr-5">
-                  <FiBookOpen className="text-7xl p-3 text-red-400 bg-red-100 mask mask-squircle" />
-                </span>
-                <p className="font-semibold text-gray-500 text-lg">
-                  Build skills your way, from labs to courses
-                </p>
-              </div>
-            </Fade>
+                <div className="flex justify-center items-center mt-5">
+                  <span className="mr-5">
+                    <FiBookOpen className="text-7xl p-3 text-red-400 bg-red-100 mask mask-squircle" />
+                  </span>
+                  <p className="font-semibold text-gray-500 text-lg">
+                    Build skills your way, from labs to courses
+                  </p>
+                </div>
+              </Fade>
             </div>
-           
           </div>
-          <div className="w-full "  data-aos="fade-left" >
+          <div className="w-full" data-aos="fade-down">
             <img src={join} alt="" />
           </div>
         </div>
