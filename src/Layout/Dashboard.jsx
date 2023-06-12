@@ -12,7 +12,7 @@ const Dashboard = () => {
     <>
       <Navbar />
       <ContainerXL>
-        <div className="grid grid-cols-4 gap-5 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-16">
           <aside>
             <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto bg-white shadow-xl rounded-lg text-gray-900">
               <div className="rounded-t-lg h-32 overflow-hidden">
